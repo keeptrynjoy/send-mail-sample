@@ -1,7 +1,6 @@
 package com.example.sendmail.config;
 
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -17,7 +16,7 @@ import java.util.Properties;
 @Setter
 @Configuration
 @ConfigurationProperties(prefix = "mail")
-public class MailConfiguration {
+public class MailConfigurationV1 {
     private static final String MAIL_SMTP_HOST = "mail.smtp.host";
     private static final String MAIL_SMTP_PORT = "mail.smtp.port";
     private static final String MAIL_SMTP_SSL_TRUST = "mail.smtp.ssl.trust";

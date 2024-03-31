@@ -1,7 +1,7 @@
 package com.example.sendmail.service.impl;
 
 import com.example.sendmail.MailMessage;
-import com.example.sendmail.config.MailConfiguration;
+import com.example.sendmail.config.MailConfigurationV1;
 import com.example.sendmail.service.MailSendService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,13 +16,13 @@ import javax.mail.internet.MimeMessage;
 @RequiredArgsConstructor
 public class MailSendImplV1Service implements MailSendService {
 
-    private final MailConfiguration mailConfiguration;
+    private final MailConfigurationV1 mailConfigurationV1;
 
     @Override
     public void send(MailMessage mailMessage) {
         final String type = "text/html; charset=utf-8";
 
-        MimeMessage mimeMessage = new MimeMessage(mailConfiguration.sendMailConfig());
+        MimeMessage mimeMessage = new MimeMessage(mailConfigurationV1.sendMailConfig());
         try {
             mimeMessage.setFrom(new InternetAddress(mailMessage.getFrom()));
             mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(mailMessage.getTo()));
