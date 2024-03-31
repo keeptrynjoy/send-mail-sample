@@ -1,6 +1,6 @@
 package com.example.sendmail.service;
 
-import com.example.sendmail.MailMessage;
+import com.example.sendmail.MailMessageV1;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ class MailSendServiceTest {
 
     @Test
     void send() {
-        MailMessage message = MailMessage.builder()
+        MailMessageV1 message = MailMessageV1.builder()
                 .from("sungmin4218@gmail.com")
                 .to("sm.kim2@okestro.com")
                 .subject("[TEST] mail")

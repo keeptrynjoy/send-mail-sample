@@ -1,9 +1,9 @@
 package com.example.sendmail.service;
 
 
-import com.example.sendmail.MailMessage;
+import com.example.sendmail.MailMessageV1;
 
 public interface MailSendService {
 
-    void send(MailMessage m);
+    void send(MailMessageV1 m);
 }
