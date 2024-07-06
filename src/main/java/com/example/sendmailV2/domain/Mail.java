@@ -5,11 +5,11 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 @Getter
-public class MailCore extends JavaMailSenderImpl {
-    
+public class Mail extends JavaMailSenderImpl {
+
     private final JavaMailSender mailSender;
     
-    public MailCore(JavaMailSender mailSender) {
+    public Mail(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
 }

@@ -1,13 +1,13 @@
 package com.example.sendmailV2.service;
 
-import com.example.sendmailV2.domain.MailCore;
+import com.example.sendmailV2.domain.Mail;
 import com.example.sendmailV2.service.port.MailSender;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class FakeMailSender implements MailSender {
     @Override
-    public void send(MailCore mailCore, String to, String from, String subject, String content) {
+    public void send(Mail mail, String to, String from, String subject, String content) {
       log.info("MailSend Success~!!");
     }
 }

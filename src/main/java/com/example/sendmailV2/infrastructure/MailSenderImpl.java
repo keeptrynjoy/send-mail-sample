@@ -1,6 +1,6 @@
 package com.example.sendmailV2.infrastructure;
 
-import com.example.sendmailV2.domain.MailCore;
+import com.example.sendmailV2.domain.Mail;
 import com.example.sendmailV2.service.port.MailSender;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 public class MailSenderImpl implements MailSender{
 
     @Override
-    public void send(MailCore mailCore, String to, String from, String subject, String content) {
-        MimeMessage message = mailCore.createMimeMessage();
+    public void send(Mail mail, String to, String from, String subject, String content) {
+        MimeMessage message = mail.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
         try {
@@ -28,6 +28,6 @@ public class MailSenderImpl implements MailSender{
             log.error("makeMailMsg Exception", me.fillInStackTrace());
             throw new RuntimeException(me.getMessage(), me);
         }
-        mailCore.send(message);
+        mail.send(message);
     }
 }

@@ -1,6 +1,6 @@
 package com.example.sendmailV2.service;
 
-import com.example.sendmailV2.service.port.MailCoreFactory;
+import com.example.sendmailV2.service.port.MailFactory;
 import com.example.sendmailV2.service.port.MailSender;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,9 +11,9 @@ public class MailServiceTest {
 
     @BeforeEach
     void init(){
-        MailCoreFactory mailCoreFactory = new FaKeMailCoreFactory();
+        MailFactory mailFactory = new FaKeMailFactory();
         MailSender mailSender = new FakeMailSender();
-        this.mailService = new MailService(mailCoreFactory, mailSender);
+        this.mailService = new MailService(mailFactory, mailSender);
     }
 
     @Test

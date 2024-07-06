@@ -1,8 +1,8 @@
 package com.example.sendmailV2.infrastructure;
 
 import com.example.sendmailV2.config.MailConfig;
-import com.example.sendmailV2.domain.MailCore;
-import com.example.sendmailV2.service.port.MailCoreFactory;
+import com.example.sendmailV2.domain.Mail;
+import com.example.sendmailV2.service.port.MailFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,18 +17,18 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest(classes = {MailCoreFactoryImpl.class, MailConfig.class})
+@SpringBootTest(classes = {MailFactoryImpl.class, MailConfig.class})
 @ComponentScan(basePackages = "com.example.sendmailV2")
-public class MailCoreFactoryImplTest {
+public class MailFactoryImplTest {
 
     @MockBean
     private JavaMailSenderImpl javaMailSender;
 
     @Autowired
-    private MailCoreFactory mailCoreFactory;
+    private MailFactory mailFactory;
 
     @Test
-    public void testCreateMailCore() {
+    public void testCreateMail() {
         String host = "smtp.example.com";
         int port = 587;
         String userNm = "user@example.com";
@@ -42,7 +42,7 @@ public class MailCoreFactoryImplTest {
         given(javaMailSender.getPassword()).willReturn(userPswd);
         given(javaMailSender.getJavaMailProperties()).willReturn(properties);
 
-        MailCore mailCore = mailCoreFactory.createMailCore(
+        Mail mail = mailFactory.createMail(
                 host,
                 port,
                 userNm,
@@ -51,8 +51,8 @@ public class MailCoreFactoryImplTest {
         );
 
         assertAll(()->{
-            assertThat(mailCore).isNotNull();
-            assertThat(mailCore.getMailSender()).isEqualTo(javaMailSender);
+            assertThat(mail).isNotNull();
+            assertThat(mail.getMailSender()).isEqualTo(javaMailSender);
 
             verify(javaMailSender, times(1)).setHost(host);
             verify(javaMailSender, times(1)).setPort(port);

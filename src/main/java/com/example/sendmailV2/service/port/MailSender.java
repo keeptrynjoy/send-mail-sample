@@ -1,9 +1,9 @@
 package com.example.sendmailV2.service.port;
 
 
-import com.example.sendmailV2.domain.MailCore;
+import com.example.sendmailV2.domain.Mail;
 
 public interface MailSender {
 
-    void send(MailCore mailCore, String to, String from, String subject, String content);
+    void send(Mail mail, String to, String from, String subject, String content);
 }
