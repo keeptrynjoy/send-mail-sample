@@ -33,7 +33,7 @@ dependencies {
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'javax.mail:mail:1.4.7'
-	implementation 'org.springframework.boot:spring-boot-starter-mail]'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 
 tasks.named('test') {

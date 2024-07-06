@@ -1,22 +1,22 @@
 package com.example.sendmailV2.infrastructure;
 
+import com.example.sendmailV2.domain.MailCore;
 import com.example.sendmailV2.service.port.MailSender;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
 @RequiredArgsConstructor
 public class MailSenderImpl implements MailSender{
 
-    private final JavaMailSender javaMailSender;
-
-    public void send(String to, String from, String subject, String content) {
-        MimeMessage message = javaMailSender.createMimeMessage();
+    @Override
+    public void send(MailCore mailCore, String to, String from, String subject, String content) {
+        MimeMessage message = mailCore.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
         try {
@@ -28,6 +28,6 @@ public class MailSenderImpl implements MailSender{
             log.error("makeMailMsg Exception", me.fillInStackTrace());
             throw new RuntimeException(me.getMessage(), me);
         }
-        javaMailSender.send(message);
+        mailCore.send(message);
     }
 }
