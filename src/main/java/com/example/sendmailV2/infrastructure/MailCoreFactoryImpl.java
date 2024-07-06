@@ -2,25 +2,21 @@ package com.example.sendmailV2.infrastructure;
 
 import com.example.sendmailV2.domain.MailCore;
 import com.example.sendmailV2.service.port.MailCoreFactory;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
 
 import java.util.Properties;
 
 @Component
+@RequiredArgsConstructor
 public class MailCoreFactoryImpl implements MailCoreFactory {
 
-    private static JavaMailSenderImpl sender;
+    private final ObjectProvider<JavaMailSenderImpl> senderObjectProvider;
 
-    @Override
     public MailCore createMailCore(String host, int port, String userNm, String userPswd, Properties properties) {
-     return create(host, port, userNm, userPswd, properties);
-    }
-
-    public static MailCore create(String host, int port, String userNm, String userPswd, Properties properties) {
-        if(sender == null) {
-            sender = new JavaMailSenderImpl();
-        }
+        JavaMailSenderImpl sender = senderObjectProvider.getObject();
         sender.setHost(host);
         sender.setPort(port);
         sender.setUsername(userNm);
