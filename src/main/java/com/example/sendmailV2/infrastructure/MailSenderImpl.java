@@ -1,6 +1,5 @@
 package com.example.sendmailV2.infrastructure;
 
-import com.example.sendmailV2.domain.Mail;
 import com.example.sendmailV2.service.port.MailSender;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -24,10 +23,11 @@ public class MailSenderImpl implements MailSender{
             helper.setFrom(from);
             helper.setSubject(subject);
             helper.setText(content);
+
+            mail.send(message);
         } catch (MessagingException me) {
-            log.error("makeMailMsg Exception", me.fillInStackTrace());
+            log.error("Mail Send Exception", me.fillInStackTrace());
             throw new RuntimeException(me.getMessage(), me);
         }
-        mail.send(message);
     }
 }

@@ -1,6 +1,6 @@
 package com.example.sendmailV2.service;
 
-import com.example.sendmailV2.domain.Mail;
+import com.example.sendmailV2.infrastructure.Mail;
 import com.example.sendmailV2.service.port.MailSender;
 import com.example.sendmailV2.service.port.MailFactory;
 import lombok.RequiredArgsConstructor;

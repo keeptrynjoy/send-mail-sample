@@ -1,7 +1,6 @@
 package com.example.sendmailV2.infrastructure;
 
 import com.example.sendmailV2.config.MailConfig;
-import com.example.sendmailV2.domain.Mail;
 import com.example.sendmailV2.service.port.MailFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,7 @@ public class MailFactoryImplTest {
 
         assertAll(()->{
             assertThat(mail).isNotNull();
-            assertThat(mail.getMailSender()).isEqualTo(javaMailSender);
+            assertThat(mail.mailSender()).isEqualTo(javaMailSender);
 
             verify(javaMailSender, times(1)).setHost(host);
             verify(javaMailSender, times(1)).setPort(port);

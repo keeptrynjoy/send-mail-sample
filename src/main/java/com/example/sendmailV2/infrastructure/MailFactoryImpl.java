@@ -1,6 +1,5 @@
 package com.example.sendmailV2.infrastructure;
 
-import com.example.sendmailV2.domain.Mail;
 import com.example.sendmailV2.service.port.MailFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.ObjectProvider;

@@ -1,6 +1,6 @@
 package com.example.sendmailV2.service.port;
 
-import com.example.sendmailV2.domain.Mail;
+import com.example.sendmailV2.infrastructure.Mail;
 
 import java.util.Properties;
 
